@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0E1858"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%232443E8'/%3E%3Ccircle cx='24' cy='24' r='14' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-dasharray='66 22' transform='rotate(-220 24 24)'/%3E%3Cpath d='M16 29l6-6.5 4 3.5 7-8M28 18h5.5v5.5' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"><style>:root{color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Performance Training Platform</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@500;600;700&display=swap">
@@ -12,6 +12,7 @@
   --good:#1B7F47; --bad:#C0302F; --warn:#9A6200;
   --shadow:0 1px 2px rgba(19,26,44,.06),0 6px 20px rgba(19,26,44,.05);
   --tint:13%;
+  --rib-a:#0E1858; --rib-b:#2443E8;
   --c-running:#D9480F; --c-musculation:#6741D9; --c-xcski:#0C8599; --c-renfo:#2B8A3E; --c-cycling:#EBA50B;
   --on-running:#FFFFFF; --on-musculation:#FFFFFF; --on-xcski:#FFFFFF; --on-renfo:#FFFFFF; --on-cycling:#1B1400;
   --f-head:'Barlow Semi Condensed','Arial Narrow',system-ui,sans-serif;
@@ -25,6 +26,7 @@
     --good:#4CC57F; --bad:#FF7B78; --warn:#E5B24A;
     --shadow:0 1px 2px rgba(0,0,0,.4);
     --tint:22%;
+    --rib-a:#080D2E; --rib-b:#1B2FB0;
     --c-running:#FF8A4C; --c-musculation:#A48DFF; --c-xcski:#3CCBDD; --c-renfo:#5BD375; --c-cycling:#FFC93A;
     --on-running:#1A0D05; --on-musculation:#120B30; --on-xcski:#04181B; --on-renfo:#06210D; --on-cycling:#1B1400;
     color-scheme:dark;
@@ -37,6 +39,7 @@
   --good:#4CC57F; --bad:#FF7B78; --warn:#E5B24A;
   --shadow:0 1px 2px rgba(0,0,0,.4);
   --tint:22%;
+  --rib-a:#080D2E; --rib-b:#1B2FB0;
   --c-running:#FF8A4C; --c-musculation:#A48DFF; --c-xcski:#3CCBDD; --c-renfo:#5BD375; --c-cycling:#FFC93A;
   --on-running:#1A0D05; --on-musculation:#120B30; --on-xcski:#04181B; --on-renfo:#06210D; --on-cycling:#1B1400;
   color-scheme:dark;
@@ -52,21 +55,56 @@ h1,h2,h3{margin:0;font-family:var(--f-head);font-weight:600;letter-spacing:.005e
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .num{font-variant-numeric:tabular-nums}
 
-/* ---------- header ---------- */
+/* ---------- ribbon ---------- */
+body::before{background:var(--rib-a)!important}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px))) calc(-1*max(16px,env(safe-area-inset-right,0px)));
-  padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));
-  background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:10px;min-width:0}
-.logo{width:32px;height:32px;border-radius:9px;background:var(--accent);display:grid;place-items:center;flex:none}
-.logo svg{width:20px;height:20px;stroke:var(--accent-ink);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.brand h1{font-size:20px;line-height:1.1;white-space:nowrap}
-.brand small{display:block;font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:600}
-.nav{display:none;gap:4px;margin-left:auto}
-.nav button{border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:5px 10px;font-weight:600;cursor:pointer;color:var(--ink)}
-.sync{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
-.sync i{width:8px;height:8px;border-radius:50%;background:var(--muted)}
-.sync.cloud i{background:var(--good)} .sync.local i{background:var(--warn)} .sync.ro i{background:var(--bad)}
-.nav + .sync{margin-left:0}
+  padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));color:#fff;
+  background:repeating-linear-gradient(115deg,rgba(255,255,255,.045) 0 2px,transparent 2px 16px),linear-gradient(100deg,var(--rib-a) 0%,var(--rib-b) 100%);
+  box-shadow:0 2px 14px rgba(8,13,46,.28);display:flex;align-items:center;gap:14px;min-height:60px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;flex:1}
+.logo{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);display:grid;place-items:center;flex:none;color:#fff}
+.logo svg{width:28px;height:28px}
+.wm{min-width:0;line-height:1.1}
+.wm b{display:block;font-family:var(--f-head);font-weight:700;font-size:21px;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wm .short{display:none}
+.wm small{display:block;margin-top:2px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.tools{display:flex;align-items:center;gap:8px;flex:none}
+.chipbtn{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 13px;border-radius:999px;border:1px solid rgba(255,255,255,.26);background:rgba(255,255,255,.12);color:#fff;font-weight:600;cursor:pointer;white-space:nowrap;max-width:100%}
+.chipbtn:hover{background:rgba(255,255,255,.22)}
+.chipbtn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.chipbtn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.chipbtn.icononly{width:38px;padding:0;justify-content:center}
+#athlete{padding:0 14px 0 4px}
+.av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;letter-spacing:.02em;color:#fff;border:2px solid rgba(255,255,255,.85);flex:none;background:var(--rib-b)}
+.av.big{width:46px;height:46px;font-size:16px;border:0}
+.an{max-width:140px;overflow:hidden;text-overflow:ellipsis}
+.sync::before{content:"";width:8px;height:8px;border-radius:50%;background:#9AA5BD;flex:none;order:2;margin-left:-2px}
+.sync .lbl{order:3}
+.sync.cloud::before{background:#4ADE80}.sync.local::before{background:#FBBF24}.sync.err::before,.sync.ro::before{background:#F87171}.sync.busy::before{background:#FBBF24;animation:pulse 1s ease-in-out infinite}
+.sync.busy svg{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{50%{opacity:.25}}
+
+/* ---------- loading splash ---------- */
+#splash{position:fixed;inset:0;z-index:100;display:grid;place-items:center;color:#fff;pointer-events:none;
+  background:repeating-linear-gradient(115deg,rgba(255,255,255,.045) 0 2px,transparent 2px 16px),linear-gradient(135deg,var(--rib-a),var(--rib-b));
+  animation:splashOut .55s ease 2.05s forwards}
+.sp-in{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:24px}
+.sp-logo{width:104px;height:104px}
+.sp-logo svg{width:100%;height:100%;overflow:visible}
+.sp-logo .ring{animation:drawRing 1.1s cubic-bezier(.5,0,.2,1) .15s both}
+.sp-logo .trend{stroke-dasharray:100;animation:drawLine .7s ease .85s both}
+.sp-logo .tip{opacity:0;animation:fadeIn .3s ease 1.35s forwards}
+.sp-name{font-family:var(--f-head);font-weight:700;font-size:clamp(24px,6vw,36px);letter-spacing:.01em;opacity:0;animation:rise .6s ease 1.0s forwards}
+.sp-motto{display:flex;gap:14px;font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.sp-motto span{opacity:0;animation:rise .5s ease forwards}
+.sp-motto span:nth-child(1){animation-delay:1.2s}.sp-motto span:nth-child(2){animation-delay:1.38s}.sp-motto span:nth-child(3){animation-delay:1.56s}
+@keyframes drawRing{from{stroke-dasharray:0 100}to{stroke-dasharray:78 22}}
+@keyframes drawLine{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes splashOut{to{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){#splash{display:none}}
 
 /* ---------- layout ---------- */
 .app{max-width:1500px;margin:0 auto;padding-top:16px;display:flex;flex-direction:column;gap:16px}
@@ -133,7 +171,7 @@ select.in,select.sel{appearance:auto}
 .dl{display:flex;align-items:center;gap:4px}
 .dn{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:13px;font-variant-numeric:tabular-nums}
 .dm{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.today .dn{background:var(--accent);color:var(--accent-ink)}
+.today .dn,.cell.out.today .dn{background:var(--accent);color:var(--accent-ink)}
 .add{opacity:0;border:0;background:var(--surface-2);color:var(--muted);width:22px;height:22px;border-radius:6px;cursor:pointer;font-size:16px;line-height:1;padding:0;flex:none}
 .cell:hover .add,.daycol:hover .add,.add:focus-visible{opacity:1}
 .add:hover{background:var(--accent-soft);color:var(--ink)}
@@ -255,7 +293,6 @@ select.in,select.sel{appearance:auto}
   .cal,.side,.prog,.hist{grid-column:1/-1}
   .side{flex-direction:row;flex-wrap:wrap}
   .side .card{flex:1 1 320px}
-  .nav{display:flex}
 }
 
 /* ---------- progress ---------- */
@@ -354,20 +391,116 @@ select.in,select.sel{appearance:auto}
 .mf{display:flex;gap:8px;align-items:center;justify-content:flex-end;padding:12px 18px 16px;position:sticky;bottom:0;background:var(--surface)}
 .mf .sp{flex:1}
 @media (max-width:520px){.mb{grid-template-columns:1fr}.mh h3{font-size:20px}}
+
+/* ---------- V1.1 additions ---------- */
+.acts{display:inline-flex;gap:3px;align-items:center}
+.add.paste{display:inline-grid;place-items:center}
+.add svg,.btn.sm svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.cell.sel{box-shadow:inset 0 0 0 2px var(--accent)}
+.dv-h .sp{flex:1}
+.agenda{margin-top:12px;padding-top:12px;border-top:1px solid var(--line-2)}
+.agenda .dv-h h3{font-size:18px}
+.clipbar{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:10px;padding:6px 6px 6px 12px;margin-bottom:8px}
+.clipbar .cl-t{display:flex;align-items:center;gap:8px;min-width:0}
+.clipbar .cl-t svg{width:16px;height:16px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.banner.warn{background:color-mix(in srgb,var(--warn) 14%,var(--surface));border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
+.tabbar{display:none}
+.compact .cell{min-height:92px}.compact .card{padding:12px}.compact .act{padding:8px}
+/* settings + profile */
+#st-box{display:flex;flex-direction:column;gap:10px}
+.sbody{padding:4px 18px 6px;display:flex;flex-direction:column;gap:14px}
+.sgroup{display:flex;flex-direction:column;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--line-2)}
+.sgroup:last-of-type{border-bottom:0}
+.sgroup h4{margin:0;font-family:var(--f-head);font-size:16px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.srow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.srow>span{font-weight:600}
+.sync-state{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line-2)}
+.sync-state svg{width:22px;height:22px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:1px}
+.sync-state.cloud svg{color:var(--good)}.sync-state.local svg,.sync-state.busy svg{color:var(--warn)}.sync-state.err svg,.sync-state.ro svg{color:var(--bad)}
+.sync-state.busy svg{animation:spin 1s linear infinite}
+.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.steps a,.adv a{color:var(--accent);font-weight:600}
+.adv summary{cursor:pointer;color:var(--muted);font-weight:600}
+.swatches{display:flex;gap:8px;flex-wrap:wrap}
+.swatch{width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line);cursor:pointer;padding:0}
+.swatch[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink)}
+.prof-prev{display:flex;align-items:center;gap:12px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:var(--surface-2);border:1px solid var(--line-2);border-radius:5px;padding:1px 6px}
+
+/* ---------- tablet + phone ---------- */
+@media (max-width:1100px){
+  body{padding-bottom:calc(78px + env(safe-area-inset-bottom,0px))}
+  .tabbar{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);
+    padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));box-shadow:0 -4px 18px rgba(8,13,46,.1)}
+  .tabbar button{display:flex;flex-direction:column;align-items:center;gap:2px;border:0;background:none;padding:6px 2px;border-radius:10px;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer}
+  .tabbar button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .tabbar button.on{color:var(--accent);background:var(--accent-soft)}
+  .toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+  .card{scroll-margin-top:76px}
+}
+@media (max-width:640px){
+  .top{gap:8px;padding-block:8px;min-height:54px}
+  .logo{width:36px;height:36px;border-radius:10px}.logo svg{width:25px;height:25px}
+  .brand{gap:9px}
+  .wm .full{display:none}.wm .short{display:inline}
+  .wm b{font-size:22px;letter-spacing:.06em}
+  .wm small{font-size:9.5px;letter-spacing:.12em}
+  .tools{gap:6px}
+  .chipbtn{height:36px;padding:0 10px}
+  #athlete{padding:0 4px}
+  .an{display:none}
+  .sync{width:36px;padding:0;justify-content:center}
+  .sync .lbl{display:none}
+  .sync::before{position:absolute;top:2px;right:2px;margin:0;border:2px solid var(--rib-a);width:12px;height:12px}
+  .sync{position:relative}
+  .chipbtn.icononly{width:36px}
+  .card{padding:12px;border-radius:12px}
+  .sh h2,.cal-bar h2{font-size:19px}
+  .cal-bar{gap:6px}
+  .cal-title{font-size:17px;flex:1 1 100%;order:5;padding:2px 2px 0}
+  .cal-bar .sp{display:none}
+  .cal-bar .sel{margin-left:auto}
+  .legend{font-size:11px;gap:4px 10px}
+  .backdrop{place-items:end stretch;padding:0}
+  .modal{width:100%;max-height:92%;border-radius:18px 18px 0 0;border-bottom:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+  .mf{padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+  .kpis b{font-size:21px}
+  .hero-num b{font-size:46px}
+  .side .card{flex-basis:100%}
+  .hist-list{min-height:320px}
+  .prog-bar{gap:6px}
+  .seg button{padding:5px 9px}
+  .row .in{width:66px}
+  .row{gap:6px}
+}
+@media (pointer:coarse){
+  .btn,.sel,.seg button,.pchip,.tabbar button,.chipbtn{min-height:40px}
+  .btn.sm{min-height:36px}
+  .in,.sel{font-size:16px}
+  .add{width:30px;height:30px;font-size:18px}
+  .chip{padding-block:4px}
+  .cell,.daycol{touch-action:manipulation}
+  .menu button{padding:12px 12px}
+}
+@container cal (max-width:560px){
+  .cell .chip{pointer-events:none}
+  .acts{display:none}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
+</head><body>
+<div id="splash" aria-hidden="true"><div class="sp-in"><div class="sp-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><circle class="ring" cx="24" cy="24" r="19" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" pathLength="100" stroke-dasharray="78 22" transform="rotate(-220 24 24)"/><path class="trend" d="M13.5 30.5l7-7.5 5 4.2 9.5-11" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" pathLength="100"/><path class="tip" d="M28 16h7.2v7.2" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sp-name">Performance Training Platform</div><div class="sp-motto"><span>Plan.</span><span>Train.</span><span>Progress.</span></div></div></div>
+
 <header class="top">
   <div class="brand">
-    <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 13h4l2.5-7 4 13 2.5-6h6.5"/></svg></div>
-    <div><h1>Performance Training Platform</h1><small>Plan · Train · Progress</small></div>
+    <div class="logo"><svg viewBox="0 0 48 48" aria-hidden="true"><circle class="ring" cx="24" cy="24" r="19" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" pathLength="100" stroke-dasharray="78 22" transform="rotate(-220 24 24)"/><path class="trend" d="M13.5 30.5l7-7.5 5 4.2 9.5-11" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" pathLength="100"/><path class="tip" d="M28 16h7.2v7.2" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="wm"><b><span class="full">Performance Training Platform</span><span class="short">PTP</span></b><small>Plan · Train · Progress</small></div>
   </div>
-  <nav class="nav" aria-label="Sections">
-    <button type="button" data-jump="sec-calendar">Calendar</button>
-    <button type="button" data-jump="sec-countdown">Countdown</button>
-    <button type="button" data-jump="sec-progress">Progress</button>
-    <button type="button" data-jump="sec-history">History</button>
-  </nav>
-  <div class="sync" id="sync" role="status"><i></i><span>Connecting…</span></div>
+  <div class="tools">
+    <button type="button" class="chipbtn" id="athlete" aria-label="Athlete profile"><span class="av" id="av">AT</span><span class="an" id="an">Athlete</span></button>
+    <button type="button" class="chipbtn sync busy" id="sync" aria-live="polite"><svg viewBox="0 0 24 24" aria-hidden="true"></svg><span class="lbl">Loading…</span></button>
+    <button type="button" class="chipbtn icononly" id="cog" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+  </div>
 </header>
 
 <main class="app">
@@ -388,6 +521,7 @@ select.in,select.sel{appearance:auto}
         <button type="button" class="btn pri" id="cal-new"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Plan session</button>
       </div>
       <div class="legend" id="legend"></div>
+      <div class="clipbar" id="clipbar" hidden></div>
       <div class="hint"><span class="mouse"><b>Double-click</b> a day to plan a session or goal · <b>click</b> a session to edit · <b>right-click</b> for more options</span><span class="touch"><b>Double-tap</b> a day to plan · <b>tap</b> a session to edit · <b>long-press</b> for more options</span></div>
       <div id="cal-body"></div>
     </section>
@@ -445,6 +579,7 @@ select.in,select.sel{appearance:auto}
   </div>
 </main>
 
+<nav class="tabbar" aria-label="Sections"><button type="button" data-jump="sec-calendar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>Calendar</span></button><button type="button" data-jump="sec-countdown"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4.5l2.5 1.5M9.5 3h5"/></svg><span>Countdown</span></button><button type="button" data-jump="sec-progress"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16M8 15l3.5-4 3 2.5L20 7"/></svg><span>Progress</span></button><button type="button" data-jump="sec-history"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 108-8 8 8 0 00-6 2.7M4 4v3.5h3.5M12 8v4.5l3 1.5"/></svg><span>History</span></button></nav>
 <div id="menu" class="menu" role="menu" hidden></div>
 <div id="modals"></div>
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
@@ -457,7 +592,8 @@ const pad=n=>String(n).padStart(2,'0');
 const iso=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
 const parse=s=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d,12)};
 const addDays=(d,n)=>{const x=new Date(d.getTime());x.setDate(x.getDate()+n);return x};
-const mondayOf=d=>addDays(d,-((d.getDay()+6)%7));
+let WS=1;
+const mondayOf=d=>addDays(d,-((d.getDay()-WS+7)%7));
 const addMonths=(d,n)=>{const y=d.getFullYear(),m=d.getMonth()+n;const last=new Date(y,m+1,0).getDate();return new Date(y,m,Math.min(d.getDate(),last),12)};
 const SLUG={running:'running',musculation:'musculation',xcski:'xc-ski',renfo:'renfo',cycling:'cycling'};
 
@@ -523,6 +659,7 @@ const fmtDate=(d,o)=>d.toLocaleDateString(L,o);
 const longDate=d=>fmtDate(d,{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 const shortDate=d=>fmtDate(d,{weekday:'short',day:'numeric',month:'short'});
 const WD=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const dnames=()=>WS===0?[WD[6]].concat(WD.slice(0,6)):WD;
 const fmtDur=m=>{if(m==null||m==='')return '';m=Math.round(m);const h=Math.floor(m/60),r=m%60;return h?(r?h+'h'+pad(r):h+'h'):r+' min'};
 const r1=x=>Math.round(x*10)/10;
 const fmtKm=k=>k==null||k===''?'':String(r1(+k)).replace(/\.0$/,'')+' km';
@@ -554,18 +691,39 @@ const FLAG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h2v18H5zM8 
 
 /* ---------------- state ---------------- */
 const state={
-  act:{},goals:{},media:{},
-  view:'month',cursor:parse('2026-10-01'),
+  act:{},goals:{},media:{},tomb:{},
+  profile:{name:'Athlete',initials:'AT',color:'#2443E8',updatedAt:0},
+  set:{theme:'system',density:'comfortable',view:'month',weekStart:1,showWeek:true,hints:true},
+  view:'month',cursor:parse('2026-10-01'),sel:iso(new Date()),clip:null,
   sync:'connecting',readOnly:false,
   hist:{cat:'all',q:'',open:null},
   prog:{metric:'hours',period:'week',mode:'total',style:'bars',cats:new Set(CATS.map(c=>c.key))}
 };
 let DB=null, IDX={a:{},g:{}}, TODAY=iso(new Date());
+const KEY={activities:'act',goals:'goals'};
 
-/* ---------------- storage: shared db when available, this device otherwise ---------------- */
-const LSKEY='ptp.data.v1';
-function loadLocal(){try{const j=JSON.parse(localStorage.getItem(LSKEY)||'null');if(j){state.act=j.act||{};state.goals=j.goals||{};state.media=j.media||{}}}catch(e){}}
-function saveLocal(){try{localStorage.setItem(LSKEY,JSON.stringify({act:state.act,goals:state.goals,media:state.media}))}catch(e){toast('Could not save on this device: storage is full or blocked.')}}
+/* ================= STORAGE =================
+   Inside claude.ai the shared `db` is used. Everywhere else (GitHub Pages, a file, any host)
+   the data lives in this browser first and, when sync is set up, is merged with a private
+   GitHub Gist so every device sees the same data. */
+const LSKEY='ptp.data.v1', MEDKEY='ptp.media.v1', SYNCKEY='ptp.sync.v1';
+const SYNC={dirty:false,token:'',gistId:'',state:'off',err:'',last:0,busy:false,again:false,etag:'',timer:0,remoteMedia:{}};
+let warnedQuota=false;
+
+function loadLocal(){
+  try{const j=JSON.parse(localStorage.getItem(LSKEY)||'null');
+    if(j){state.act=j.act||{};state.goals=j.goals||{};state.tomb=j.tomb||{};if(j.profile)Object.assign(state.profile,j.profile);if(j.media)state.media=j.media}}catch(e){}
+  try{const m=JSON.parse(localStorage.getItem(MEDKEY)||'null');if(m)Object.assign(state.media,m)}catch(e){}
+  [state.act,state.goals].forEach(c=>Object.keys(c).forEach(id=>{const o=c[id];o.id=id;if(!o.updatedAt)o.updatedAt=1}));
+  try{const j=JSON.parse(localStorage.getItem(SYNCKEY)||'null');if(j){SYNC.token=j.token||'';SYNC.gistId=j.gistId||''}}catch(e){}
+}
+function saveLocal(){
+  try{localStorage.setItem(LSKEY,JSON.stringify({act:state.act,goals:state.goals,tomb:state.tomb,profile:state.profile}))}
+  catch(e){toast('Could not save on this device: browser storage is full or blocked.')}
+  try{localStorage.setItem(MEDKEY,JSON.stringify(state.media))}
+  catch(e){if(!warnedQuota){warnedQuota=true;toast('Pictures could not be kept on this device (storage full).')}}
+}
+function saveSyncCfg(){try{localStorage.setItem(SYNCKEY,JSON.stringify({token:SYNC.token,gistId:SYNC.gistId}))}catch(e){}}
 const clean=o=>{const x=Object.assign({},o);delete x.id;return JSON.parse(JSON.stringify(x))};
 function dbError(e){
   const c=e&&e.code;
@@ -575,32 +733,41 @@ function dbError(e){
   else toast('Could not save this change.');
   console.warn(e);
 }
+function persist(){saveLocal();SYNC.dirty=true;scheduleSync(1200)}
+
 async function put(coll,id,data){
   if(state.readOnly){toast('You have view-only access. Changes are not saved.');return false}
-  const key=coll==='activities'?'act':'goals';
-  state[key][id]=Object.assign({},data,{id});queueRender();
-  if(DB){try{await DB.collection(coll).doc(id).set(clean(data))}catch(e){dbError(e);return false}}
-  else saveLocal();
+  const key=KEY[coll],now=Date.now();
+  state[key][id]=Object.assign({},data,{id,updatedAt:now});delete state.tomb[key+'/'+id];queueRender();
+  if(DB){try{await DB.collection(coll).doc(id).set(clean(state[key][id]))}catch(e){dbError(e);return false}}
+  else persist();
   return true;
 }
 async function del(coll,id){
   if(state.readOnly){toast('You have view-only access. Changes are not saved.');return false}
-  const key=coll==='activities'?'act':'goals';
+  const key=KEY[coll];
   delete state[key][id];queueRender();
   if(DB){try{await DB.collection(coll).doc(id).delete()}catch(e){dbError(e);return false}}
-  else saveLocal();
+  else{state.tomb[key+'/'+id]=Date.now();persist()}
   return true;
+}
+async function putProfile(p){
+  state.profile=Object.assign({},state.profile,p,{updatedAt:Date.now()});renderProfile();
+  if(DB){try{await DB.doc('meta/profile').set(clean(state.profile))}catch(e){dbError(e)}}
+  else persist();
 }
 async function putMedia(id,url){
   state.media[id]=url;
   if(DB){try{await DB.collection('media').doc(id).set({data:url})}catch(e){dbError(e)}}
-  else saveLocal();
+  else persist();
 }
 const mediaWait={};
 function getMedia(id){
   if(state.media[id])return Promise.resolve(state.media[id]);
-  if(!DB)return Promise.resolve(null);
-  return mediaWait[id]||(mediaWait[id]=DB.doc('media/'+id).get().then(s=>{delete mediaWait[id];if(s.exists){state.media[id]=s.data().data;return state.media[id]}return null}).catch(()=>{delete mediaWait[id];return null}));
+  if(DB)return mediaWait[id]||(mediaWait[id]=DB.doc('media/'+id).get().then(s=>{delete mediaWait[id];if(s.exists){state.media[id]=s.data().data;return state.media[id]}return null}).catch(()=>{delete mediaWait[id];return null}));
+  const rm=SYNC.remoteMedia[id];
+  if(rm)return mediaWait[id]||(mediaWait[id]=(rm.content!=null?Promise.resolve(rm.content):fetch(rm.raw_url).then(r=>r.text())).then(t=>{delete mediaWait[id];state.media[id]=t;try{localStorage.setItem(MEDKEY,JSON.stringify(state.media))}catch(e){}return t}).catch(()=>{delete mediaWait[id];return null}));
+  return Promise.resolve(null);
 }
 function hydrate(root){
   $$('img[data-mid]:not([src])',root).forEach(img=>{getMedia(img.dataset.mid).then(u=>{if(u)img.src=u;else img.remove()})});
@@ -609,10 +776,166 @@ async function pool(items,fn,n){
   let i=0;const run=async()=>{while(i<items.length){const k=i++;await fn(items[k])}};
   await Promise.all(Array.from({length:Math.min(n||6,items.length)},run));
 }
+
+/* ---------- artifact mode (claude.ai shared db) ---------- */
 function subscribe(){
   const err=e=>{if(e&&e.code==='revoked'){state.sync='ro';state.readOnly=true;updateSync()}console.warn(e)};
   DB.collection('activities').onSnapshot(s=>{const o={};s.docs.forEach(d=>{o[d.id]=Object.assign({},d.data(),{id:d.id})});state.act=o;queueRender()},err);
   DB.collection('goals').onSnapshot(s=>{const o={};s.docs.forEach(d=>{o[d.id]=Object.assign({},d.data(),{id:d.id})});state.goals=o;queueRender()},err);
+  DB.doc('meta/profile').onSnapshot(s=>{if(s.exists){Object.assign(state.profile,s.data());renderProfile()}},err);
+}
+
+/* ---------- GitHub Gist sync (any other host) ---------- */
+const GH='https://api.github.com';
+const ghFetch=(path,opt)=>fetch(GH+path,Object.assign({},opt||{},{headers:Object.assign({'Accept':'application/vnd.github+json','Authorization':'Bearer '+SYNC.token},(opt&&opt.headers)||{})}));
+const syncOn=()=>!DB&&!!SYNC.token&&!!SYNC.gistId;
+function setSync(s,err){SYNC.state=s;SYNC.err=err||'';updateSync();queueRender();if(typeof refreshSyncBox==='function')refreshSyncBox()}
+function packData(){
+  const strip=c=>{const o={};Object.keys(c).forEach(id=>{o[id]=clean(c[id])});return o};
+  const tomb={},cut=Date.now()-60*864e5;Object.keys(state.tomb).forEach(k=>{if(state.tomb[k]>cut)tomb[k]=state.tomb[k]});
+  return {app:'ptp',v:2,savedAt:new Date().toISOString(),profile:state.profile,act:strip(state.act),goals:strip(state.goals),tomb};
+}
+/* merge remote into local (last write wins per record). Returns {changed, pushNeeded} */
+function mergeRemote(r){
+  let changed=false,push=false;
+  const rt=r.tomb||{},cutT=Date.now()-60*864e5;
+  Object.keys(state.tomb).forEach(k=>{if(state.tomb[k]<cutT)delete state.tomb[k]});
+  ['act','goals'].forEach(key=>{
+    const L=state[key],R=r[key]||{};
+    new Set(Object.keys(L).concat(Object.keys(R))).forEach(id=>{
+      const k=key+'/'+id,l=L[id],rr=R[id],lu=l?l.updatedAt||0:-1,ru=rr?rr.updatedAt||0:-1;
+      const td=Math.max(state.tomb[k]||0,rt[k]||0),bu=Math.max(lu,ru);
+      if(td>bu){
+        if(l){delete L[id];changed=true}
+        if(rr||!rt[k])push=true;
+        state.tomb[k]=td;
+      }else if(ru>lu){L[id]=Object.assign({},rr,{id});changed=true;delete state.tomb[k]}
+      else if(lu>ru){push=true}
+    });
+  });
+  Object.keys(rt).forEach(k=>{if(!(k in state.tomb)){const [key,id]=k.split('/');if(!(state[key]||{})[id])state.tomb[k]=rt[k]}});
+  Object.keys(state.tomb).forEach(k=>{if(!(k in rt))push=true});
+  const rp=r.profile;
+  if(rp&&(rp.updatedAt||0)>(state.profile.updatedAt||0)){Object.assign(state.profile,rp);changed=true}
+  else if(!rp||(state.profile.updatedAt||0)>(rp.updatedAt||0))push=true;
+  return {changed,push};
+}
+async function readGist(g){
+  const f=g.files&&g.files['ptp-data.json'];
+  let text=null;
+  if(f)text=f.truncated?await (await fetch(f.raw_url)).text():f.content;
+  SYNC.remoteMedia={};
+  Object.keys(g.files||{}).forEach(n=>{const m=/^m_(.+)\.txt$/.exec(n);if(m){const x=g.files[n];SYNC.remoteMedia[m[1]]={raw_url:x.raw_url,content:x.truncated?null:x.content}}});
+  return text?JSON.parse(text):{};
+}
+function scheduleSync(ms){
+  if(!syncOn())return;
+  clearTimeout(SYNC.timer);SYNC.timer=setTimeout(syncNow,ms||0);
+}
+async function syncNow(force){
+  if(!syncOn())return;
+  if(SYNC.busy){SYNC.again=true;return}
+  SYNC.busy=true;const wasDirty=SYNC.dirty;SYNC.dirty=false;setSync('syncing');
+  try{
+    const res=await ghFetch('/gists/'+SYNC.gistId,{headers:SYNC.etag&&!force&&!wasDirty?{'If-None-Match':SYNC.etag}:{}});
+    if(res.status===401||res.status===403){SYNC.dirty=SYNC.dirty||wasDirty;setSync('error','GitHub did not accept the token. Reconnect in Settings.');return}
+    if(res.status===404){SYNC.dirty=SYNC.dirty||wasDirty;setSync('error','The data Gist was not found. Check the Gist ID in Settings.');return}
+    let pushNeeded=false;
+    if(res.status!==304){
+      if(!res.ok)throw new Error('GitHub answered '+res.status);
+      SYNC.etag=res.headers.get('etag')||'';
+      const g=await res.json(),remote=await readGist(g);
+      const m=mergeRemote(remote);
+      if(m.changed){saveLocal();queueRender();renderProfile()}
+      pushNeeded=m.push;
+    }
+    const files={};
+    Object.keys(state.media).forEach(id=>{if(!SYNC.remoteMedia[id])files['m_'+id+'.txt']={content:state.media[id]}});
+    if(pushNeeded||Object.keys(files).length){
+      files['ptp-data.json']={content:JSON.stringify(packData())};
+      const p=await ghFetch('/gists/'+SYNC.gistId,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({files})});
+      if(!p.ok)throw new Error('Saving to GitHub failed ('+p.status+')');
+      SYNC.etag='';Object.keys(files).forEach(n=>{const m=/^m_(.+)\.txt$/.exec(n);if(m)SYNC.remoteMedia[m[1]]={content:files[n].content,raw_url:''}});
+    }
+    SYNC.last=Date.now();setSync('synced');
+  }catch(e){
+    console.warn(e);SYNC.dirty=SYNC.dirty||wasDirty;
+    setSync(navigator.onLine===false||/Failed to fetch|NetworkError|Load failed/i.test(String(e&&e.message))?'offline':'error',navigator.onLine===false||/Failed to fetch|NetworkError|Load failed/i.test(String(e&&e.message))?'':String(e&&e.message||e));
+    clearTimeout(SYNC.timer);SYNC.timer=setTimeout(syncNow,30000);
+  }finally{
+    SYNC.busy=false;
+    if(SYNC.again){SYNC.again=false;scheduleSync(300)}
+  }
+}
+async function connectSync(token,gistId){
+  token=(token||'').trim();gistId=(gistId||'').trim();
+  if(!token)return 'Paste your GitHub token first.';
+  const prev={t:SYNC.token,g:SYNC.gistId};
+  SYNC.token=token;
+  try{
+    const u=await ghFetch('/user');
+    if(u.status===401)throw new Error('GitHub did not accept this token. Check that you copied all of it.');
+    if(!u.ok)throw new Error('GitHub answered '+u.status+'.');
+    if(gistId){
+      const g=await ghFetch('/gists/'+encodeURIComponent(gistId));
+      if(!g.ok)throw new Error('That Gist ID was not found with this token.');
+      SYNC.gistId=gistId;
+    }else{
+      let found=null;
+      for(let page=1;page<=5&&!found;page++){
+        const r=await ghFetch('/gists?per_page=100&page='+page);
+        if(!r.ok)throw new Error('Could not list your Gists ('+r.status+'). The token needs the "gist" permission.');
+        const list=await r.json();
+        found=list.find(g=>g.files&&g.files['ptp-data.json'])||null;
+        if(list.length<100)break;
+      }
+      if(found)SYNC.gistId=found.id;
+      else{
+        const c=await ghFetch('/gists',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({description:'PTP data (Performance Training Platform). Do not delete.',public:false,files:{'ptp-data.json':{content:JSON.stringify(packData())}}})});
+        if(!c.ok)throw new Error('Could not create the data Gist ('+c.status+'). The token needs the "gist" permission.');
+        SYNC.gistId=(await c.json()).id;
+      }
+    }
+    saveSyncCfg();SYNC.etag='';startPolling();
+    await syncNow(true);
+    return SYNC.state==='error'?SYNC.err:'';
+  }catch(e){
+    SYNC.token=prev.t;SYNC.gistId=prev.g;
+    return /Failed to fetch|NetworkError|Load failed/i.test(String(e.message))?'Could not reach GitHub. Check your connection.':e.message;
+  }
+}
+function disconnectSync(){
+  SYNC.token='';SYNC.gistId='';SYNC.etag='';SYNC.remoteMedia={};clearTimeout(SYNC.timer);saveSyncCfg();setSync('off');
+}
+function syncInfo(){
+  if(DB)return state.readOnly?{c:'ro',i:'alert',t:'View only',d:'You can read this data but not change it.'}:{c:'cloud',i:'cloud',t:'Online · synced',d:'Saved online. Every device opening this page sees the same data.'};
+  if(!syncOn())return {c:'local',i:'device',t:'This device only',d:'Saved in this browser only. Open Settings to sync across devices.'};
+  const s=SYNC.state;
+  if(s==='syncing')return {c:'busy',i:'spin',t:'Syncing…',d:'Syncing with your private GitHub Gist.'};
+  if(s==='error')return {c:'err',i:'alert',t:'Sync problem',d:SYNC.err||'Sync failed. Your changes are safe on this device and will be retried.'};
+  if(s==='offline')return {c:'local',i:'device',t:'Offline · saved here',d:'No connection. Changes are kept on this device and sync when you are back online.'};
+  const hh=SYNC.last?new Date(SYNC.last).toLocaleTimeString(L,{hour:'2-digit',minute:'2-digit'}):'';
+  return {c:'cloud',i:'cloud',t:'Online · synced',d:'Synced with your private GitHub Gist'+(hh?' at '+hh:'')+'.'};
+}
+const SICONS={
+  cloud:'<path d="M7 18a4 4 0 010-8 5.5 5.5 0 0110.7 1.5A3.5 3.5 0 0117 18H7z"/><path d="M9.5 13.5l2 2 3.5-3.5"/>',
+  device:'<rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/>',
+  spin:'<path d="M20 11a8 8 0 00-14-4M4 13a8 8 0 0014 4M6 3v4h4M18 21v-4h-4"/>',
+  alert:'<circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/>'
+};
+function updateSync(){
+  const el=$('#sync');if(!el)return;
+  const i=state.sync==='connecting'&&!DB&&!SYNC.token?{c:'busy',i:'spin',t:'Loading…',d:'Loading'}:syncInfo();
+  el.className='chipbtn sync '+i.c;
+  el.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+SICONS[i.i]+'</svg><span class="lbl">'+esc(i.t)+'</span>';
+  el.title=i.d;el.setAttribute('aria-label',i.t+'. '+i.d);
+}
+let polling=false;
+function startPolling(){
+  if(polling)return;polling=true;
+  setInterval(()=>{if(!document.hidden)syncNow()},45000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncNow()});
+  addEventListener('online',()=>syncNow());
 }
 async function initStore(){
   let db=null,user=null;
@@ -623,16 +946,16 @@ async function initStore(){
   }catch(e){}
   if(db){
     DB=db;state.sync='cloud';
-    try{if(user&&user.can&&user.can('data.write')===false){state.readOnly=true;state.sync='ro'}}catch(e){}
+    try{if(user&&user.can&&user.can('data.write')===false){state.readOnly=true}}catch(e){}
     subscribe();
-  }else{state.sync='local';loadLocal()}
+  }else{
+    state.sync='local';
+    if(syncOn()){
+      syncNow();startPolling();
+    }
+  }
   updateSync();queueRender();
 }
-function updateSync(){
-  const el=$('#sync');el.className='sync '+(state.sync==='cloud'?'cloud':state.sync==='local'?'local':state.sync==='ro'?'ro':'');
-  $('span',el).textContent=state.sync==='cloud'?'Synced across your devices':state.sync==='local'?'Saved on this device only':state.sync==='ro'?'View only':'Connecting…';
-}
-
 /* ---------------- tiny UI helpers ---------------- */
 let toastT;
 function toast(msg){const t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>{t.hidden=true},3200)}
@@ -641,7 +964,7 @@ let rq=0;function queueRender(){if(rq)return;rq=requestAnimationFrame(()=>{rq=0;
 const modalStack=[];
 function syncInert(){
   const open=modalStack.length>0;
-  $('.top').inert=open;$('.app').inert=open;
+  $('.top').inert=open;$('.app').inert=open;const tb=$('.tabbar');if(tb)tb.inert=open;
   modalStack.forEach((m,i)=>{m.el.inert=i<modalStack.length-1});
 }
 function mountModal(inner,label){
@@ -671,7 +994,7 @@ function showMenu(x,y,title,items){
   const w=menu.offsetWidth,h=menu.offsetHeight;
   menu.style.left=Math.max(8,Math.min(x,innerWidth-w-8))+'px';
   menu.style.top=Math.max(8,Math.min(y,innerHeight-h-8))+'px';
-  menu._items=items;lastMenu=Date.now();
+  menu._items=items;
   const f=$('button',menu);if(f)f.focus({preventScroll:true});
 }
 let lastMenu=0;
@@ -704,17 +1027,20 @@ function chip(a,lg){
   return '<button type="button" class="chip cat-'+a.category+(done?' done':'')+(over?' overdue':'')+(lg?' lg':'')+'" data-aid="'+a.id+'" title="'+esc(tip)+'">'+ico(a.category)+
     '<span class="txt"><span class="lbl">'+esc(a.type||c.label)+'</span>'+m+'</span>'+(done?CHECK:'')+'</button>';
 }
+const PASTE_ICO='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="3" width="8" height="4" rx="1"/><path d="M16 5h2a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2h2"/></svg>';
+const clipLabel=()=>state.clip?(state.clip.type||CAT[state.clip.category].label):'';
+const pasteBtn=s=>state.clip?'<button type="button" class="add paste" data-paste="'+s+'" aria-label="Paste '+esc(clipLabel())+' on this day" title="Paste: '+esc(clipLabel())+'">'+PASTE_ICO+'</button>':'';
 const goalFlag=g=>'<button type="button" class="gflag" data-gid="'+g.id+'" title="Goal: '+esc(g.name)+'">'+FLAG+'<span class="gt">'+esc(g.name)+'</span></button>';
 
 function monthHTML(){
   const y=state.cursor.getFullYear(),m=state.cursor.getMonth();
   const first=new Date(y,m,1,12),start=mondayOf(first),end=addDays(mondayOf(new Date(y,m+1,0,12)),6);
-  let h='<div class="month" role="grid">'+WD.map(d=>'<div class="wd" role="columnheader"><span class="long">'+d+'</span><span class="short">'+d.slice(0,3)+'</span></div>').join('');
+  let h='<div class="month" role="grid">'+dnames().map(d=>'<div class="wd" role="columnheader"><span class="long">'+d+'</span><span class="short">'+d.slice(0,3)+'</span></div>').join('');
   for(let d=start;d<=end;d=addDays(d,1)){
     const s=iso(d),as=IDX.a[s]||[],gs=IDX.g[s]||[];
-    h+='<div class="cell'+(d.getMonth()!==m?' out':'')+(s===TODAY?' today':'')+'" data-date="'+s+'" role="gridcell" aria-label="'+longDate(d)+'">'+
+    h+='<div class="cell'+(d.getMonth()!==m?' out':'')+(s===TODAY?' today':'')+(s===state.sel&&narrow()?' sel':'')+'" data-date="'+s+'" role="gridcell" aria-label="'+longDate(d)+'">'+
       '<div class="cell-h"><span class="dl"><span class="dn">'+d.getDate()+'</span>'+(d.getDate()===1?'<span class="dm">'+fmtDate(d,{month:'short'})+'</span>':'')+'</span>'+
-      '<button type="button" class="add" data-add="'+s+'" aria-label="Plan on '+longDate(d)+'">+</button></div>'+
+      '<span class="acts">'+pasteBtn(s)+'<button type="button" class="add" data-add="'+s+'" aria-label="Plan on '+longDate(d)+'">+</button></span></div>'+
       gs.map(goalFlag).join('')+
       '<div class="chips">'+as.map(a=>chip(a,false)).join('')+'</div>'+
       (as.length>3?'<button type="button" class="more" data-day="'+s+'">+'+(as.length-3)+' more</button>':'')+'</div>';
@@ -725,8 +1051,8 @@ function weekHTML(){
   const s0=mondayOf(state.cursor);let h='<div class="week">';
   for(let i=0;i<7;i++){
     const d=addDays(s0,i),s=iso(d),as=IDX.a[s]||[],gs=IDX.g[s]||[];
-    h+='<div class="daycol'+(s===TODAY?' today':'')+'" data-date="'+s+'"><div class="dh"><span class="l"><span class="wdn">'+WD[i].slice(0,3)+'</span><span class="dnum">'+d.getDate()+'</span><span class="wdn">'+fmtDate(d,{month:'short'})+'</span></span>'+
-      '<button type="button" class="add" data-add="'+s+'" aria-label="Plan on '+longDate(d)+'">+</button></div>'+
+    h+='<div class="daycol'+(s===TODAY?' today':'')+'" data-date="'+s+'"><div class="dh"><span class="l"><span class="wdn">'+dnames()[i].slice(0,3)+'</span><span class="dnum">'+d.getDate()+'</span><span class="wdn">'+fmtDate(d,{month:'short'})+'</span></span>'+
+      '<span class="acts">'+pasteBtn(s)+'<button type="button" class="add" data-add="'+s+'" aria-label="Plan on '+longDate(d)+'">+</button></span></div>'+
       gs.map(goalFlag).join('')+'<div class="chips">'+as.map(a=>chip(a,true)).join('')+'</div></div>';
   }
   return h+'</div>';
@@ -743,16 +1069,17 @@ function dayCard(a){
     '<div class="act-btns">'+(done?'<button type="button" class="btn sm" data-do="results">Edit results</button><button type="button" class="btn sm" data-do="edit">Edit plan</button>':'<button type="button" class="btn sm pri" data-do="complete">Mark as completed</button><button type="button" class="btn sm" data-do="edit">Edit</button>')+
     '<button type="button" class="btn sm danger" data-do="delete">Delete</button></div></article>';
 }
-function dayHTML(){
-  const s=iso(state.cursor),as=IDX.a[s]||[],gs=IDX.g[s]||[];
-  return '<div class="dayview" data-date="'+s+'"><div class="dv-h"><h3>'+esc(longDate(state.cursor))+(s===TODAY?' · Today':'')+'</h3></div>'+
+function dayHTML(date,agenda){
+  const s=date||iso(state.cursor),as=IDX.a[s]||[],gs=IDX.g[s]||[],dd=parse(s);
+  return '<div class="dayview'+(agenda?' agenda':'')+'" data-date="'+s+'"><div class="dv-h"><h3>'+esc(agenda?shortDate(dd):longDate(dd))+(s===TODAY?' · Today':'')+'</h3><span class="sp"></span>'+
+    (state.clip?'<button type="button" class="btn sm" data-paste="'+s+'">'+PASTE_ICO+'Paste</button>':'')+(agenda?'<button type="button" class="btn sm pri" data-add="'+s+'">Plan session</button>':'')+'</div>'+
     gs.map(g=>'<div>'+goalFlag(g)+'</div>').join('')+
     (as.length?as.map(dayCard).join(''):'<div class="empty"><b>Nothing planned</b>Plan a session for this day, or double-click anywhere here.</div>')+'</div>';
 }
 function renderCalendar(){
   $('#cal-title').textContent=calTitle();$('#view-sel').value=state.view;
   const b=$('#cal-body');
-  b.innerHTML=state.view==='month'?monthHTML():state.view==='week'?weekHTML():dayHTML();
+  b.innerHTML=state.view==='month'?monthHTML()+(narrow()?dayHTML(state.sel,true):''):state.view==='week'?weekHTML():dayHTML();
   hydrate(b);
 }
 function renderLegend(){
@@ -784,14 +1111,21 @@ function actMenu(id,x,y){
   const items=done?[
     {label:'Edit results…',run:()=>openComplete(a,{edit:true})},
     {label:'Edit planned details…',run:()=>openEntry({activity:a})},
+    {label:'Copy session',run:()=>copyActivity(a)},
     {label:'Move back to planned',run:()=>revertToPlanned(a)},'-',
     {label:'Delete',cls:'danger',run:()=>deleteActivity(a)}
   ]:[
     {label:'Edit…',run:()=>openEntry({activity:a})},
-    {label:'Mark as completed…',run:()=>openComplete(a,{edit:false})},'-',
+    {label:'Mark as completed…',run:()=>openComplete(a,{edit:false})},
+    {label:'Copy session',run:()=>copyActivity(a)},'-',
     {label:'Delete',cls:'danger',run:()=>deleteActivity(a)}
   ];
   showMenu(x,y,(a.type||CAT[a.category].label)+' · '+shortDate(parse(a.date)),items);
+}
+function cellMenu(date,x,y){
+  const items=[{label:'Plan session…',run:()=>openEntry({date})},{label:'Add goal…',run:()=>openEntry({date,tab:'goal'})}];
+  if(state.clip)items.unshift({label:'Paste “'+clipLabel()+'”',run:()=>pasteTo(date)});
+  showMenu(x,y,shortDate(parse(date)),items);
 }
 function goalMenu(id,x,y){
   const g=state.goals[id];if(!g)return;
@@ -1206,7 +1540,8 @@ function renderBanner(){
   const demo=Object.values(state.act).some(a=>a.demo)||Object.values(state.goals).some(g=>g.demo);
   const b=$('#banner');
   if(state.sync==='connecting'){b.innerHTML='';return}
-  if(!hasAny)b.innerHTML='<div class="banner"><p><b>Your calendar is empty.</b> Double-click a day to plan your first session, or load example data to explore the platform.</p><button type="button" class="btn pri" id="demo-load">Load example data</button></div>';
+  if(!DB&&!syncOn())b.innerHTML='<div class="banner warn"><p><b>Your data is saved in this browser only.</b> It will not appear on your other devices until you set up sync. It takes about a minute.</p><button type="button" class="btn pri" data-opensync>Set up sync</button></div>';
+  else if(!hasAny)b.innerHTML='<div class="banner"><p><b>Your calendar is empty.</b> Double-click a day to plan your first session, or load example data to explore the platform.</p><button type="button" class="btn pri" id="demo-load">Load example data</button></div>';
   else if(demo)b.innerHTML='<div class="banner"><p><b>Example data is loaded</b> so you can explore. Remove it when you are ready to start with your own sessions.</p><button type="button" class="btn" id="demo-clear">Remove example data</button></div>';
   else b.innerHTML='';
 }
@@ -1251,6 +1586,7 @@ function wire(){
   });
   cal.addEventListener('click',e=>{
     if(Date.now()<suppress)return;
+    const pb=e.target.closest('[data-paste]');if(pb){pasteTo(pb.dataset.paste);return}
     const add=e.target.closest('[data-add]');if(add){openEntry({date:add.dataset.add});return}
     const chipEl=e.target.closest('[data-aid]');if(chipEl){openActivity(chipEl.dataset.aid);return}
     const g=e.target.closest('[data-gid]');if(g){openGoalModal({goal:state.goals[g.dataset.gid]});return}
@@ -1258,22 +1594,22 @@ function wire(){
     const dob=e.target.closest('[data-do]');
     if(dob){const a=getA(dob.closest('[data-cid]').dataset.cid);if(!a)return;
       ({edit:()=>openEntry({activity:a}),complete:()=>openComplete(a,{edit:false}),results:()=>openComplete(a,{edit:true}),delete:()=>deleteActivity(a)})[dob.dataset.do]();return}
-    const cell=e.target.closest('.cell[data-date]');if(cell&&state.view==='month'&&narrow())goDay(cell.dataset.date);
+    const cell=e.target.closest('.cell[data-date]');if(cell&&state.view==='month'&&narrow()){state.sel=cell.dataset.date;renderCalendar()}
   });
   cal.addEventListener('contextmenu',e=>{
-    const t=e.target.closest('[data-aid],[data-cid]'),g=e.target.closest('[data-gid]');
-    if(!t&&!g)return;e.preventDefault();
+    const t=e.target.closest('[data-aid],[data-cid]'),g=e.target.closest('[data-gid]'),c=e.target.closest('[data-date]');
+    if(!t&&!g&&!c)return;e.preventDefault();
     if(Date.now()-lastMenu<700)return;
-    let x=e.clientX,y=e.clientY;if(!x&&!y){const r=(t||g).getBoundingClientRect();x=r.left+10;y=r.bottom}
-    if(t)actMenu(t.dataset.aid||t.dataset.cid,x,y);else goalMenu(g.dataset.gid,x,y);
+    let x=e.clientX,y=e.clientY;if(!x&&!y){const r=(t||g||c).getBoundingClientRect();x=r.left+10;y=r.bottom}
+    if(t)actMenu(t.dataset.aid||t.dataset.cid,x,y);else if(g)goalMenu(g.dataset.gid,x,y);else cellMenu(c.dataset.date,x,y);
   });
   /* touch: long-press menu + double-tap to plan */
   cal.addEventListener('pointerdown',e=>{
     if(e.pointerType==='mouse')return;
-    const t=e.target.closest('[data-aid],[data-cid]'),g=e.target.closest('[data-gid]');
-    if(!t&&!g)return;
+    const t=e.target.closest('[data-aid],[data-cid]'),g=e.target.closest('[data-gid]'),c=e.target.closest('[data-date]');
+    if(!t&&!g&&(!c||e.target.closest('button')))return;
     const x=e.clientX,y=e.clientY;
-    clearTimeout(lp);lp=setTimeout(()=>{suppress=Date.now()+600;if(t)actMenu(t.dataset.aid||t.dataset.cid,x,y);else goalMenu(g.dataset.gid,x,y)},520);
+    clearTimeout(lp);lp=setTimeout(()=>{suppress=Date.now()+600;lastMenu=Date.now();if(t)actMenu(t.dataset.aid||t.dataset.cid,x,y);else if(g)goalMenu(g.dataset.gid,x,y);else cellMenu(c.dataset.date,x,y)},520);
   });
   ['pointerup','pointercancel','pointermove','scroll'].forEach(ev=>cal.addEventListener(ev,e=>{if(ev==='pointermove'&&e.pointerType==='mouse')return;clearTimeout(lp)},true));
   cal.addEventListener('pointerup',e=>{
@@ -1322,13 +1658,191 @@ function wire(){
   if(window.ResizeObserver){let w=0;new ResizeObserver(en=>{const nw=Math.round(en[0].contentRect.width);if(nw!==w){w=nw;drawChart()}}).observe($('#chart'))}
 
   /* banner */
-  $('#banner').addEventListener('click',e=>{if(e.target.closest('#demo-load'))loadDemo();if(e.target.closest('#demo-clear'))clearDemo()});
+  $('#banner').addEventListener('click',e=>{if(e.target.closest('[data-opensync]')){openSettings('sync');return}if(e.target.closest('#demo-load'))loadDemo();if(e.target.closest('#demo-clear'))clearDemo()});
 }
 
-wire();
-renderAll();
-initStore();
-})();
-</script>
 
-</body></html>
+/* ================= V1.1 · settings, profile, clipboard, backup ================= */
+const SETKEY='ptp.settings.v1';
+const DEFAULT_SET={theme:'system',density:'comfortable',view:'month',weekStart:1,showWeek:true,hints:true};
+function loadSettings(){try{state.set=Object.assign({},DEFAULT_SET,JSON.parse(localStorage.getItem(SETKEY)||'{}'))}catch(e){state.set=Object.assign({},DEFAULT_SET)}}
+function saveSettings(){try{localStorage.setItem(SETKEY,JSON.stringify(state.set))}catch(e){}}
+function applySettings(){
+  const s=state.set,r=document.documentElement;
+  if(s.theme==='system')r.removeAttribute('data-theme');else r.setAttribute('data-theme',s.theme);
+  document.body.classList.toggle('compact',s.density==='compact');
+  WS=+s.weekStart;
+  $('#sec-week').hidden=!s.showWeek;
+  $('.hint').hidden=!s.hints;
+}
+
+/* ---------- athlete profile ---------- */
+const AV_COLORS=['#2443E8','#0C8599','#2B8A3E','#D9480F','#6741D9','#C2255C'];
+const initialsOf=n=>{const w=String(n||'').trim().split(/\s+/).filter(Boolean);if(!w.length)return '';return (w.length>1?w[0][0]+w[1][0]:w[0].slice(0,2)).toUpperCase()};
+function renderProfile(){
+  const p=state.profile;
+  const av=$('#av');if(!av)return;
+  av.textContent=p.initials||initialsOf(p.name)||'AT';av.style.background=p.color||AV_COLORS[0];
+  $('#an').textContent=p.name||'Athlete';
+  $('#athlete').setAttribute('aria-label','Athlete profile: '+(p.name||'Athlete'));
+  document.title=(p.name&&p.name!=='Athlete'?p.name+' · ':'')+'Performance Training Platform';
+}
+function openProfile(){
+  const p=state.profile;let color=p.color||AV_COLORS[0],touched=!!p.initials&&p.initials!==initialsOf(p.name);
+  const m=mountModal('<div class="mh"><h3>Athlete profile</h3><button type="button" class="x" data-close aria-label="Close">✕</button></div>'+
+    '<div class="msub">Shown in the top ribbon. There is no login: each athlete keeps their own data by using their own sync connection (see Settings).</div>'+
+    '<form id="f-prof" novalidate><div class="mb">'+
+    '<div class="fld full"><label class="lab" for="pf-name">Name or username</label><input class="in" id="pf-name" maxlength="40" autocomplete="off" value="'+esc(p.name==='Athlete'?'':p.name)+'" placeholder="Francky"></div>'+
+    '<div class="fld"><label class="lab" for="pf-ini">Initials</label><input class="in" id="pf-ini" maxlength="3" autocomplete="off" value="'+esc(p.initials||'')+'" placeholder="FR"></div>'+
+    '<div class="fld"><span class="lab">Colour</span><div class="swatches" id="pf-sw" role="group" aria-label="Colour">'+AV_COLORS.map(c=>'<button type="button" class="swatch" data-c="'+c+'" style="background:'+c+'" aria-label="'+c+'" aria-pressed="'+(c===color)+'"></button>').join('')+'</div></div>'+
+    '<div class="fld full"><div class="prof-prev"><span class="av big" id="pf-av"></span><span id="pf-nm" style="font-weight:600"></span></div></div>'+
+    '</div><div class="mf"><span class="sp"></span><button type="button" class="btn" data-close>Cancel</button><button type="submit" class="btn pri">Save</button></div></form>','Athlete profile');
+  const f=$('#f-prof',m.el),nm=$('#pf-name',f),ini=$('#pf-ini',f);
+  const prev=()=>{const a=$('#pf-av',f);a.textContent=(ini.value||initialsOf(nm.value)||'AT').toUpperCase();a.style.background=color;$('#pf-nm',f).textContent=nm.value.trim()||'Athlete'};
+  nm.addEventListener('input',()=>{if(!touched)ini.value=initialsOf(nm.value);prev()});
+  ini.addEventListener('input',()=>{touched=true;ini.value=ini.value.toUpperCase();prev()});
+  $('#pf-sw',f).addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(!b)return;color=b.dataset.c;$$('.swatch',f).forEach(x=>x.setAttribute('aria-pressed',x===b));prev()});
+  f.addEventListener('submit',e=>{e.preventDefault();const name=nm.value.trim()||'Athlete';putProfile({name,initials:(ini.value.trim()||initialsOf(name)||'AT').toUpperCase().slice(0,3),color});m.close();toast('Profile saved')});
+  prev();
+}
+
+/* ---------- copy / paste a session ---------- */
+function copyActivity(a){
+  state.clip={category:a.category,type:a.type||'',expMin:a.expMin==null?null:a.expMin,expKm:a.expKm==null?null:a.expKm,desc:a.desc||'',mediaIds:(a.mediaIds||[]).slice()};
+  renderClip();toast('Copied “'+clipLabel()+'”. Use Paste on any day.');
+}
+async function pasteTo(date){
+  const c=state.clip;if(!c)return;
+  const ok=await put('activities',uid(),Object.assign({},c,{date,status:'planned',createdAt:new Date().toISOString()}));
+  if(ok){toast('Pasted on '+shortDate(parse(date)));const [s,e]=visibleRange(),d=parse(date);if(d<s||d>e){state.cursor=d;renderCalendar()}}
+}
+function renderClip(){
+  const el=$('#clipbar');
+  if(!state.clip)el.hidden=true;
+  else{el.hidden=false;el.innerHTML='<span class="cl-t">'+PASTE_ICO+'<span>Copied: <b>'+esc(clipLabel())+'</b>. Paste it on any day.</span></span><button type="button" class="btn sm" data-clipclear>Clear</button>'}
+  renderCalendar();
+}
+
+/* ---------- backup ---------- */
+async function saveFile(name,text){
+  try{if(window.claude&&window.claude.use){const d=await window.claude.use('downloads');if(d){await d.save({filename:name,data:text});return}}}catch(e){}
+  const b=new Blob([text],{type:'application/json'}),a=document.createElement('a');
+  a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},600);
+}
+async function exportBackup(){
+  const d=packData();d.media=state.media;d.exportedAt=new Date().toISOString();
+  await saveFile('ptp-backup-'+TODAY+'.json',JSON.stringify(d,null,1));toast('Backup file created');
+}
+async function importBackup(file){
+  let j;try{j=JSON.parse(await file.text())}catch(e){toast('This file is not a valid backup.');return}
+  if(!j||j.app!=='ptp'){toast('This file is not a PTP backup.');return}
+  const items=[];
+  ['act','goals'].forEach(key=>{const coll=key==='act'?'activities':'goals';Object.keys(j[key]||{}).forEach(id=>{const cur=state[key][id],o=j[key][id];if(!cur||(o.updatedAt||0)>(cur.updatedAt||0))items.push([coll,id,o])})});
+  await pool(items,it=>put(it[0],it[1],it[2]),5);
+  for(const id of Object.keys(j.media||{}))if(!state.media[id])await putMedia(id,j.media[id]);
+  if(j.profile&&(j.profile.updatedAt||0)>(state.profile.updatedAt||0))putProfile(j.profile);
+  toast(items.length+' item'+(items.length===1?'':'s')+' restored');
+}
+
+/* ---------- settings window ---------- */
+const segHTML=(id,opts,cur)=>'<div class="seg" id="'+id+'" role="group">'+opts.map(o=>'<button type="button" data-v="'+o[0]+'" aria-pressed="'+(String(cur)===String(o[0]))+'">'+esc(o[1])+'</button>').join('')+'</div>';
+const swHTML=(id,on,label)=>'<label class="chk-row"><input type="checkbox" id="'+id+'"'+(on?' checked':'')+'><span>'+esc(label)+'</span></label>';
+function syncBoxHTML(){
+  const i=syncInfo();
+  let h='<div class="sync-state '+i.c+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+SICONS[i.i]+'</svg><div><b>'+esc(i.t)+'</b><div class="help">'+esc(i.d)+'</div></div></div>';
+  if(DB){h+='<p class="help">This copy runs inside Claude, where data is stored online automatically.</p>';return h}
+  if(!syncOn()){
+    h+='<ol class="steps"><li><a href="https://github.com/settings/tokens/new?scopes=gist&description=PTP%20sync&default_expires_at=none" target="_blank" rel="noopener noreferrer">Create a GitHub token</a> (free). Only the <b>gist</b> permission is needed. Tick no other box, copy the token.</li>'+
+      '<li>Paste it here and press <b>Connect</b>. Do the same on each device (phone, computer) with the <b>same token</b>.</li></ol>'+
+      '<div class="fld"><label class="lab" for="st-token">GitHub token</label><input class="in" id="st-token" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="ghp_… or github_pat_…"></div>'+
+      '<details class="adv"><summary>Advanced: use an existing data ID</summary><div class="fld" style="margin-top:8px"><label class="lab" for="st-gist">Gist ID (optional)</label><input class="in" id="st-gist" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Leave empty to create or find it automatically"><span class="help">Use a different Gist ID to keep another athlete’s data separate with the same GitHub account.</span></div></details>'+
+      '<div class="err" id="st-err" role="alert"></div><div><button type="button" class="btn pri" id="st-connect">Connect and sync</button></div>'+
+      '<p class="help">Your data goes to a private (secret) Gist in your own GitHub account. The token stays in this browser only. No login on this platform.</p>';
+  }else{
+    h+='<p class="help">Connected to a private Gist <code>'+esc(SYNC.gistId.slice(0,8))+'…</code> in your GitHub account. Changes are saved here first, then synced within seconds.</p>'+
+      '<div class="row"><button type="button" class="btn" id="st-now">Sync now</button><button type="button" class="btn danger" id="st-off">Disconnect this device</button></div>';
+  }
+  return h;
+}
+function refreshSyncBox(){
+  const box=$('#st-box');if(!box)return;
+  const keep=$('#st-token')?$('#st-token').value:'',kg=$('#st-gist')?$('#st-gist').value:'';
+  box.innerHTML=syncBoxHTML();
+  if($('#st-token'))$('#st-token').value=keep;if($('#st-gist'))$('#st-gist').value=kg;
+}
+function openSettings(focus){
+  const s=state.set;
+  const m=mountModal('<div class="mh"><h3>Settings</h3><button type="button" class="x" data-close aria-label="Close">✕</button></div>'+
+    '<div class="sbody">'+
+    '<section class="sgroup" id="sg-sync"><h4>Data and sync</h4><div id="st-box">'+syncBoxHTML()+'</div>'+
+      '<div class="row" style="margin-top:6px"><button type="button" class="btn sm" id="st-exp">Export backup</button><button type="button" class="btn sm" id="st-imp">Import backup</button><input type="file" id="st-file" accept="application/json,.json" hidden></div></section>'+
+    '<section class="sgroup"><h4>Appearance</h4>'+
+      '<div class="srow"><span>Theme</span>'+segHTML('s-theme',[['system','Auto'],['light','Light'],['dark','Dark']],s.theme)+'</div>'+
+      '<div class="srow"><span>Density</span>'+segHTML('s-dens',[['comfortable','Comfortable'],['compact','Compact']],s.density)+'</div></section>'+
+    '<section class="sgroup"><h4>Calendar</h4>'+
+      '<div class="srow"><span>Opens in</span>'+segHTML('s-view',[['month','Month'],['week','Week'],['day','Day']],s.view)+'</div>'+
+      '<div class="srow"><span>Week starts on</span>'+segHTML('s-ws',[[1,'Monday'],[0,'Sunday']],s.weekStart)+'</div></section>'+
+    '<section class="sgroup"><h4>Dashboard</h4>'+swHTML('s-showweek',s.showWeek,'Show the “This week” card')+swHTML('s-hints',s.hints,'Show usage hints above the calendar')+'</section>'+
+    '<p class="help" style="padding:0 2px">Performance Training Platform · V1.1. Display settings are saved on this device only.</p></div>'+
+    '<div class="mf"><span class="sp"></span><button type="button" class="btn pri" data-close>Done</button></div>','Settings');
+  const el=m.el;
+  const seg=(id,key,conv)=>$('#'+id,el).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$$('button',$('#'+id,el)).forEach(x=>x.setAttribute('aria-pressed',x===b));state.set[key]=conv?conv(b.dataset.v):b.dataset.v;saveSettings();applySettings();renderAll();});
+  seg('s-theme','theme');seg('s-dens','density');seg('s-view','view');seg('s-ws','weekStart',Number);
+  $('#s-showweek',el).addEventListener('change',e=>{state.set.showWeek=e.target.checked;saveSettings();applySettings()});
+  $('#s-hints',el).addEventListener('change',e=>{state.set.hints=e.target.checked;saveSettings();applySettings()});
+  $('#st-exp',el).addEventListener('click',exportBackup);
+  $('#st-imp',el).addEventListener('click',()=>$('#st-file',el).click());
+  $('#st-file',el).addEventListener('change',e=>{const f=e.target.files[0];e.target.value='';if(f)importBackup(f)});
+  el.addEventListener('click',async e=>{
+    if(e.target.closest('#st-connect')){
+      const b=e.target.closest('#st-connect');b.disabled=true;b.textContent='Connecting…';$('#st-err',el).textContent='';
+      const err=await connectSync($('#st-token',el).value,$('#st-gist',el)?$('#st-gist',el).value:'');
+      if(err&&!syncOn()){b.disabled=false;b.textContent='Connect and sync';$('#st-err',el).textContent=err}
+      else{refreshSyncBox();toast(err?'Connected, but: '+err:'Connected. Your data is now synced.')}
+    }
+    if(e.target.closest('#st-now')){syncNow(true)}
+    if(e.target.closest('#st-off')){
+      const v=await ask({title:'Disconnect this device?',body:'Your data stays on this device and in your Gist. This browser just stops syncing until you connect again.',buttons:[{label:'Cancel',value:false},{label:'Disconnect',kind:'danger',value:true}]});
+      if(v){disconnectSync();refreshSyncBox();renderBanner()}
+    }
+  });
+  if(focus==='sync')setTimeout(()=>{const t=$('#st-token',el);if(t)t.focus()},60);
+}
+
+/* ================= V1.1 · extra wiring + start ================= */
+function wire2(){
+  $('#athlete').addEventListener('click',openProfile);
+  $('#cog').addEventListener('click',()=>openSettings());
+  $('#sync').addEventListener('click',()=>openSettings('sync'));
+  /* bottom tab bar */
+  if(window.IntersectionObserver){
+    const io=new IntersectionObserver(en=>{en.forEach(x=>{if(x.isIntersecting)$$('.tabbar button').forEach(b=>b.classList.toggle('on',b.dataset.jump===x.target.id))})},{rootMargin:'-35% 0px -55% 0px'});
+    ['sec-calendar','sec-countdown','sec-progress','sec-history'].forEach(id=>io.observe($('#'+id)));
+  }
+  /* clipboard bar + shortcuts + hover tracking */
+  $('#clipbar').addEventListener('click',e=>{if(e.target.closest('[data-clipclear]')){state.clip=null;renderClip()}});
+  const cal=$('#sec-calendar');let hoverDate=null,hoverAid=null;
+  cal.addEventListener('pointerover',e=>{if(e.pointerType!=='mouse')return;const d=e.target.closest('[data-date]'),a=e.target.closest('[data-aid]');hoverDate=d?d.dataset.date:null;hoverAid=a?a.dataset.aid:null});
+  cal.addEventListener('pointerleave',()=>{hoverDate=null;hoverAid=null});
+  document.addEventListener('keydown',e=>{
+    if(modalStack.length||!(e.ctrlKey||e.metaKey))return;
+    if(/INPUT|TEXTAREA|SELECT/.test((document.activeElement||{}).tagName||''))return;
+    if(e.key==='c'||e.key==='C'){
+      const f=document.activeElement&&document.activeElement.closest?document.activeElement.closest('[data-aid]'):null;
+      const a=getA(hoverAid||(f&&f.dataset.aid));if(a){copyActivity(a);e.preventDefault()}
+    }else if((e.key==='v'||e.key==='V')&&state.clip){
+      const d=hoverDate||(state.view==='day'?iso(state.cursor):state.sel);if(d){pasteTo(d);e.preventDefault()}
+    }
+  });
+  /* re-render the calendar when it crosses the phone breakpoint */
+  if(window.ResizeObserver){let was=narrow();new ResizeObserver(()=>{const n=narrow();if(n!==was){was=n;renderCalendar()}}).observe($('#sec-calendar'))}
+}
+
+/* start */
+loadLocal();loadSettings();applySettings();
+state.view=state.set.view;
+wire();wire2();renderProfile();renderAll();updateSync();
+initStore();
+setTimeout(()=>{const s=$('#splash');if(s)s.remove()},2800);
+})();
+</script></body></html>
